@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Prof. Dr. Ir. Harm van Beek</title>
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --accent: #3498db;
+            --text: #333;
+            --light-bg: #f8fafc;
+            --border: #e2e8f0;
+            --tag-hansken: #e11d48;
+            --tag-case: #059669;
+            --tag-dfaas: #7c3aed;
+            --tag-solveit: #d97706;
+        }
+
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.5; color: var(--text); background: #f1f5f9; margin: 0; padding: 20px; }
+        .cv-container { max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; display: flex; flex-wrap: wrap; }
+        
+        /* Sidebar (Left Column) */
+        .sidebar { flex: 1; min-width: 300px; background: var(--primary); color: white; padding: 40px 30px; }
+        .sidebar h1 { font-size: 2rem; margin: 0; line-height: 1.2; }
+        .sidebar h2 { font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .contact-info { margin-top: 30px; font-size: 0.9rem; }
+        .contact-item { margin-bottom: 12px; display: flex; align-items: center; }
+        .contact-item a { color: #cbd5e1; text-decoration: none; word-break: break-all; }
+        
+        /* Main Content (Right Column) */
+        .main-content { flex: 2; min-width: 600px; padding: 40px; background: white; }
+        
+        /* Section Styling */
+        .section-header { 
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--primary); margin: 30px 0 15px 0; padding-bottom: 5px; cursor: pointer;
+        }
+        .section-header h3 { margin: 0; text-transform: uppercase; font-size: 1.1rem; color: var(--primary); }
+        .collapse-icon { font-weight: bold; font-size: 1.2rem; }
+        .collapsible-content { max-height: 5000px; overflow: hidden; transition: max-height 0.3s ease-in-out; }
+        .collapsed { max-height: 0; }
+
+        /* Item Styling */
+        .entry { margin-bottom: 20px; position: relative; }
+        .entry-date { font-weight: bold; color: var(--accent); font-size: 0.85rem; }
+        .entry-title { font-weight: 700; display: block; margin: 2px 0; }
+        .entry-desc { font-size: 0.95rem; color: #4b5563; }
+        
+        /* Tags & Links */
+        .tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-weight: 700; color: white; margin-left: 5px; text-transform: uppercase; }
+        .tag-hansken { background: var(--tag-hansken); }
+        .tag-case { background: var(--tag-case); }
+        .tag-dfaas { background: var(--tag-dfaas); }
+        .tag-solveit { background: var(--tag-solveit); }
+        
+        .link-btn { 
+            display: inline-block; margin-top: 0px; padding: 2px 10px; font-size: 0.8rem; 
+            border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; text-decoration: none; transition: 0.2s;
+        }
+        .link-btn:hover { background: var(--accent); color: white; }
+
+        @media (max-width: 900px) { .cv-container { flex-direction: column; } .sidebar, .main-content { min-width: 100%; } }
+        @media print { .collapse-icon { display: none; } .collapsed { max-height: none; } .sidebar { background: #eee !important; color: black !important; } }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <aside class="sidebar">
+        <h1>Harm van Beek</h1>
+        <h2>Prof. Dr. Ir.</h2>
+        <p>Endowed Full Professor of Digital Forensics<br>
+		Senior Digital Forensic Scientist</p>
+        
+        <div class="contact-info">
+            <div class="contact-item"><strong>LinkedIn:</strong>&nbsp; <a href="https://linkedin.com/in/hvanbeek" target="_blank">hvanbeek</a></div>
+            <div class="contact-item"><strong>ORCID:</strong>&nbsp; <a href="https://orcid.org/0000-0002-6128-5201" target="_blank">0000-0002-6128-5201</a></div>
+            <div class="contact-item"><strong>Scopus:</strong>&nbsp; <a href="https://www.scopus.com/authid/detail.uri?authorId=22434224000" target="_blank">22434224000</a></div>
+        </div>
+
+        <div style="margin-top:40px;">
+            <h3 style="border-bottom: 1px solid var(--accent); padding-bottom:5px;">EXPERTISE</h3>
+            <ul style="font-size: 0.9rem; padding-left: 18px;">
+                <li>NRGD Registered Court Expert</li>
+                <li>Computer & Software Forensics</li>
+                <li>Digital Forensics as a Service (DFaaS)</li>
+                <li>Large-scale Evidence Analysis</li>
+                <li>Cloud-Native Investigation Platforms</li>
+                <li>Formal Methods in Computer Science</li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <div class="section-header" onclick="toggleSection('emp')">
+            <h3>Professional Employment</h3>
+            <span class="collapse-icon" id="emp-icon">−</span>
+        </div>
+        <div id="emp" class="collapsible-content">
+            <div class="entry">
+                <span class="entry-date">2024 — Present</span>
+                <span class="entry-title">Endowed Full Professor of Digital Forensics</span>
+                <span class="entry-desc">Open Universiteit (OUNL), Faculty of Science.</span>
+                <a href="https://www.ou.nl/en/zoek-medewerker#!user/HB6" class="link-btn" target="_blank">link</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">2009 — Present</span>
+                <span class="entry-title">(Senior) Digital Forensic Scientist</span>
+                <span class="entry-desc">Netherlands Forensic Institute (NFI).</span>
+                <a href="https://www.forensicinstitute.nl/research-and-innovation/nfi-professors/harm-van-beek" class="link-btn" target="_blank">link</a>
+			</div>
+            <div class="entry">
+                <span class="entry-date">1998 — 2009</span>
+                <span class="entry-title">Founder, Co-owner and CTO</span>
+                <span class="entry-desc">ISAAC Software Solutions & Web Solutions BV.</span>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('edu')">
+            <h3>Education</h3>
+            <span class="collapse-icon" id="emp-icon">−</span>
+        </div>
+        <div id="edu" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">2000 — 2005</span>
+                <span class="entry-title">PhD (Formal Methods)</span>
+                <span class="entry-desc">Eindhoven University of Technology. Faculty of Mathematics & Computer Science.</span>
+				<a href="https://doi.org/10.6100/IR589889" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">1995 — 2000</span>
+                <span class="entry-title">MsC (Computer Science, with honors)</span>
+                <span class="entry-desc">Eindhoven University of Technology. Faculty of Mathematics & Computer Science.</span>
+            </div>
+        </div>
+		
+        <div class="section-header" onclick="toggleSection('pub')">
+            <h3>Key Publications & Papers</h3>
+            <span class="collapse-icon" id="pub-icon">−</span>
+        </div>
+        <div id="pub" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">Sep 2025</span>
+                <span class="entry-title">Inaugural Lecture: Digital Traces – Clearly Unclear</span>
+                <span class="entry-desc">H. van Beek. Open Universiteit, Heerlen.</span>
+                <a href="https://doi.org/10.71583/20250919hvb" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Jul 2025</span>
+                <span class="entry-title">Criminalistic zoom levels: Unravelling the hierarchy of forensic traces</span>
+                <span class="entry-desc">H. van Beek, C. van den Pol, J. van der Weerd. Forensic Science International.</span>
+                <a href="https://doi.org/10.1016/j.forsciint.2025.112498" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Apr 2025</span> <span class="tag tag-solveit">SOLVE-IT</span>
+                <span class="entry-title">SOLVE-IT: A proposed digital forensic knowledge base</span>
+                <span class="entry-desc">C. Hargreaves, H. van Beek, E. Casey. Digital Forensic Research Conference (DFRWS).</span>
+                <a href="https://doi.org/10.1016/j.fsidi.2025.301864" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Dec 2020</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">ChatGPT as a copilot for investigating digital evidence</span>
+                <span class="entry-desc">H. henseler, H. van Beek. LegalAIIA 2023, in conjunction with ICAIL 2023.</span>
+                <a href="https://ceur-ws.org/Vol-3423/paper6.pdf" class="link-btn" target="_blank">link</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Dec 2020</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Digital Forensics as a Service: Stepping up the game</span>
+                <span class="entry-desc">H. van Beek, J. van den Bos, A. Boztas, E. van Eijk, R. Schramp, M. Ugen. Forensic Science International: Digital Investigation.</span>
+                <a href="https://doi.org/10.1016/j.fsidi.2020.301021" class="link-btn" target="_blank">DOI</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Nov 2018</span>
+                <span class="entry-title">A forensic visual aid: traces versus knowledge</span>
+                <span class="entry-desc">H. van Beek. Science & Justice.</span>
+                <a href="https://doi.org/10.1016/j.scijus.2018.08.006" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Sep 2017</span> <span class="tag tag-case">CASE</span>
+                <span class="entry-title">Advancing coordinated cyber-investigations and tool interoperability using a community developed specification language</span>
+                <span class="entry-desc">E. Casey, S. Barnum, R. Griffith, J. Snyder, H. van Beek, A. Nelson. Forensic Science International: Digital Investigation.</span>
+                <a href="https://doi.org/10.1016/j.diin.2017.08.002" class="link-btn" target="_blank">DOI</a>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Dec 2015</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Digital Forensics as a Service: Game On</span>
+                <span class="entry-desc">H. van Beek, E. van Eijk, R. van Baar, M. Ugen, J. Bodde, A. Siemelink. Forensic Science International: Digital Investigation.</span>
+                <a href="https://doi.org/10.1016/j.diin.2015.07.004" class="link-btn" target="_blank">DOI</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">May 2014</span> <span class="tag tag-dfaas">DFaaS</span>
+                <span class="entry-title">Digital Forensics as a Service: a Game Changer</span>
+                <span class="entry-desc">R. van Baar, H. van Beek, E. van Eijk. Forensic Science International: Digital Investigation.</span>
+                <a href="https://doi.org/10.1016/j.diin.2014.03.007" class="link-btn" target="_blank">DOI</a>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('nfi')">
+            <h3>Key NFI Expert Papers (in Dutch)</h3>
+            <span class="collapse-icon" id="nfi-icon">−</span>
+        </div>
+        <div id="nfi" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-title">Verschoningsgerechtigde informatie verwerken met Hansken <span class="tag tag-hansken">Hansken</span></span>
+                <span class="entry-desc">NFI Information Paper, Dec 2024.</span>
+				<a href="https://www.forensischinstituut.nl/over-het-nfi/publicaties/publicaties/2024/12/19/informatieblad-verschoningsgerechtigde-informatie-verwerken-met-hansken" class="link-btn" target="_blank">link</a>
+            </div>
+			<div class="entry">
+                <span class="entry-title">Vernietigen van digitale sporen met verschoningsgerechtigde informatie</span>
+                <span class="entry-desc">NFI Information Paper, Mar 2023.</span>
+				<a href="https://www.forensischinstituut.nl/over-het-nfi/publicaties/brochures/2023/04/21/informatieblad-vernietigen-van-digitale-sporen-met-verschoningsgerechtigde-informatie" class="link-btn" target="_blank">link</a>
+            </div>
+			<div class="entry">
+                <span class="entry-title">Forensische waarborgen in Hansken <span class="tag tag-hansken">Hansken</span></span>
+                <span class="entry-desc">NFI Information Paper, Nov 2021.</span>
+				<a href="https://www.forensischinstituut.nl/over-het-nfi/publicaties/publicaties/2021/11/4/de-forensische-waarborgen-in-hansken" class="link-btn" target="_blank">link</a>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('talks')">
+            <h3>Selected Keynotes, Talks & Workshops</h3>
+            <span class="collapse-icon" id="talks-icon">−</span>
+        </div>
+        <div id="talks" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">Workshop | Oct 2025</span> <span class="tag tag-solveit">SOLVE-IT</span>
+                <span class="entry-title">SOLVE-IT: Improving the Quality of Investigations</span>
+                <span class="entry-desc">Hansken.io 2025, The Hague, The Netherlands.</span>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Workshop | Oct 2025</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Expanding DFaaS: Insights and Innovations in the Hansken Platform</span>
+                <span class="entry-desc">EAFS 2025, Dublin, Ireland.</span>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Keynote | Sep 2025</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Hansken – Transforming Digital Investigations</span>
+                <span class="entry-desc">CINTIA 2025, AGH University, Krakow, Poland.</span>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Techtalk | Jun 2025</span>
+                <span class="entry-title">How digital evidence works</span>
+                <span class="entry-desc">Cyber Warfare Centre, Ministry of Defense, Huis ter Heide, The Netherlands.</span>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Keynote | Mar 2024</span>
+                <span class="entry-title">How digital evidence works</span>
+                <span class="entry-desc">DevConf 2024, Heerlen, The Netherlands.</span>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Workshop | Mar 2024</span> <span class="tag tag-case">CASE</span>
+                <span class="entry-title">CASEWorks!</span>
+                <span class="entry-desc">DFRWS EU 2024, Zaragoza, Spain.</span>
+            </div>
+            <div class="entry">
+                <span class="entry-date">Workshop | Jul 2023, Mar 2023</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Providing digital forensics as a service with code notebooks </span>
+                <span class="entry-desc"> DFRWS USA 2023, Baltimore, USA. DFRWS EU 2023, Bonn, Germany.</span>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Keynote | Mar 2022</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Lessons learned from implementing digital forensics as a service</span>
+                <span class="entry-desc">DFRWS APAC 2022, Adelaide, Australia.</span>
+            </div>
+		</div>
+
+        <div class="section-header" onclick="toggleSection('awd')">
+            <h3>Awards & Recognition</h3>
+            <span class="collapse-icon" id="awd-icon">−</span>
+        </div>
+        <div id="awd" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">2024</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">European Public Sector Award (Digital Transformation)</span>
+                <span class="entry-desc">For high-impact innovation in evidence processing.</span>
+            </div>
+            <div class="entry">
+                <span class="entry-date">2022</span> <span class="tag tag-case">CASE</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Annual TNO ICT Impact Award</span>
+                <span class="entry-desc">For high-impact knowledge sharing in cybercrime fighting via Hansken/CASE.</span>
+            </div>
+		    <div class="entry">
+                <span class="entry-date">2018</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Ministry of Justice & Security Innovation Award</span>
+                <span class="entry-desc">For a successful innovation to improve the processing of digital evidence from crime scene to court.</span>
+            </div>
+			<div class="entry">
+                <span class="entry-date">2000</span>
+                <span class="entry-title">Civi graduation prize for industry 2000</span>
+                <span class="entry-desc">Master Thesis award by the Royal Holland Society of Sciences and Humanities.</span>
+            </div>
+			<div class="entry">
+                <span class="entry-date">2000</span>
+                <span class="entry-title">Excellent Student Program 2000</span>
+                <span class="entry-desc">Excellent student award by Internet Society Nederland (ISOC).</span>
+            </div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('med')">
+            <h3>Selected Media & Interviews</h3>
+            <span class="collapse-icon" id="med-icon">−</span>
+        </div>
+        <div id="med" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">Article | Jan 2026</span>
+                <span class="entry-title">Je telefoon weet of je liegt: wij keken mee in het lab</span>
+                <span class="entry-desc">De Stentor, M. Simons.</span>
+                <a href="https://www.destentor.nl/redactie/2026/je-telefoon-weet-of-je-liegt-wij-keken-mee-in-het-lab-waar-criminelen-worden-ontmaskerd" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Sep 2025</span>
+                <span class="entry-title">Oratie Harm van Beek: van digitale sporen naar betrouwbaar bewijs</span>
+                <span class="entry-desc">NFI.nl, E. Marijt.</span>
+                <a href="{https://www.forensischinstituut.nl/actueel/nieuws/2025/09/11/oratie-harm-van-beek-van-digitale-sporen-naar-betrouwbaar-bewijs" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Sep 2025</span>
+                <span class="entry-title">Hoe maak je van digitale sporen betrouwbaar bewijs?</span>
+                <span class="entry-desc">OU.nl, I. Willems.</span>
+                <a href="https://www.ou.nl/en/-/hoe-maak-je-van-digitale-sporen-betrouwbaar-bewijs" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Aug 2025</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">NFI-platform Hansken actief in zeventien landen</span>
+                <span class="entry-desc">ICT/Magazine, K. Loohuis.</span>
+                <a href="https://www.ictmagazine.nl/blogs/nfi-platform-hansken-actief-in-zeventien-landen/" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Interview | May 2025</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Hansken helpt bij filteren toegang tot digitale sporen</span>
+                <span class="entry-desc">NFI.nl, M. van der Molen.</span>
+                <a href="https://www.forensischinstituut.nl/actueel/achtergrondverhalen-nfi/digitaal-platform-hansken-helpt-bij-filteren-van-toegang-tot-informatie-op-digitale-gegevensdragers-eafs-2025-deel-3" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Interview | May 2025</span>
+                <span class="entry-title">Privacy en digitale opsporing, een lastig parket</span>
+                <span class="entry-desc">Open Magazine, OUNL, E. Hollman.</span>
+                <a href="https://www.ou.nl/-/openmagazine-2025-vranken-dreissen-van-beek" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Interview | Feb 2025</span> <span class="tag tag-solveit">SOLVE-IT</span>
+                <span class="entry-title">NFI ontwerpt internationale kennisbank over digitaal onderzoek</span>
+                <span class="entry-desc">NFI.nl, M. van der Molen.</span>
+                <a href="https://www.forensischinstituut.nl/actueel/nieuws/2025/05/02/nfi-ontwerpt-internationale-kennisbank-over-digitaal-forensisch-onderzoek" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Interview | Dec 2024</span>
+                <span class="entry-title"> Harm van Beek benoemd tot hoogleraar Digital Forensics</span>
+                <span class="entry-desc">Security Management, vol 6, M. Jelgersma.</span>
+                <a href="https://www.securitymanagement.nl/harm-van-beek-benoemd-tot-bijzonder-hoogleraar-digital-forensics/" class="link-btn" target="_blank">Article</a>
+            </div>	
+			<div class="entry">
+                <span class="entry-date">Interview | Aug 2024</span>
+                <span class="entry-title">Zoeken naar een digitale speld in een hooiberg</span>
+                <span class="entry-desc">Computable.nl, T. Molenaar.</span>
+                <a href="https://www.computable.nl/2024/08/19/zoeken-naar-een-digitale-speld-in-een-hooiberg/" class="link-btn" target="_blank">Article</a>
+            </div>	
+			<div class="entry">
+                <span class="entry-date">Interview | Aug 2024</span>
+                <span class="entry-title">In databrij bergen bewijs van criminele activiteiten</span>
+                <span class="entry-desc">De Limburger, C. van Dyck.</span>
+                <a href="https://www.limburger.nl/regio/limburg/hoogleraar-digitaal-forensisch-onderzoek-in-de-brij-van-data-zitten-bergen-bewijs-van-criminele-activiteiten-besloten/22321522.html" class="link-btn" target="_blank">Article</a>
+            </div>	
+			<div class="entry">
+                <span class="entry-date">Article | Dec 2023</span>
+                <span class="entry-title">Het NFI stelt de inhoud van het werk centraal</span>
+                <span class="entry-desc">Platform O, M. Spaan.</span>
+                <a href="https://platformoverheid.nl/nfi-zet-inhoud-centraal/" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Sep 2023</span>
+                <span class="entry-title">Expressing Uncertainty Without Confusing the Fact Finders</span>
+                <span class="entry-desc">Forensic Horizons, C. Miller.</span>
+                <a href="https://medium.com/forensic-horizons/expressing-uncertainty-without-confusing-the-fact-finders-39d9eb8172aa" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Jul 2023</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Forensic Institute provides Hansken viewing method for Dutch lawyers</span>
+                <span class="entry-desc">Computer Weekly, K. Loohuis.</span>
+                <a href="https://www.computerweekly.com/news/366544593/Forensic-Institute-provides-Hansken-viewing-method-for-Dutch-lawyers" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Mar 2023</span> <span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">Advocaten kunnen nu ook vanaf eigen werkplek berichten doorzoeken over zware misdrijven</span>
+                <span class="entry-desc">Het Parool, W. Laumans & P. Vugts.</span>
+                <a href="https://www.parool.nl/amsterdam/advocaten-kunnen-nu-ook-vanaf-eigen-werkplek-berichten-doorzoeken-over-zware-misdrijven~b8749f26" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">News item | Sep 2022</span>
+                <span class="entry-title">Live meelezen met de onderwereld</span>
+                <span class="entry-desc">Nieuwsuur.</span>
+                <a href="https://nos.nl/nieuwsuur/video/2443089-live-meelezen-met-de-onderwereld" class="link-btn" target="_blank">Video</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Article | Jul 2022</span> <span class="tag tag-dfaas">DFaaS</span><span class="tag tag-hansken">Hansken</span>
+                <span class="entry-title">DFaaS: Not a Silver Bullet, but a Crucial Tool</span>
+                <span class="entry-desc">Police Chief Magazine, vol 89, nr 7, IACP.</span>
+                <a href="https://www.policechiefmagazine.org/tech-talk-digital-forensics-as-a-service/" class="link-btn" target="_blank">Article</a>
+            </div>
+			<div class="entry">
+                <span class="entry-date">Podcast | Feb 2022</span> <span class="tag tag-case">CASE</span>
+                <span class="entry-title">CASE, universele cybertaal</span>
+                <span class="entry-desc">NOS op 3 Tech Podcast, C. Meijer.</span>
+                <a href="https://www.nporadio1.nl/podcasts/nosop3techpodcast/65557/olieterminals-digitaal-aangevallen-en-de-podcastrel-rond-joe-rogan" class="link-btn" target="_blank">Podcast</a>
+            </div>			
+        </div>
+    </main>
+</div>
+
+<script>
+    function toggleSection(id) {
+        const content = document.getElementById(id);
+        const icon = document.getElementById(id + '-icon');
+        if (content.classList.contains('collapsed')) {
+            content.classList.remove('collapsed');
+            icon.innerHTML = "−";
+        } else {
+            content.classList.add('collapsed');
+            icon.innerHTML = "+";
+        }
+    }
+</script>
+
+</body>
+</html>
