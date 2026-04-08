@@ -4,105 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harm van Beek</title>
-<style>
-    *, *::before, *::after { box-sizing: border-box; }
-
-    :root {
-        --primary: #1a3a5f;
-        --accent: #3498db;
-        --text: #333;
-        --light-bg: #f8fafc;
-        --border: #e2e8f0;
-        --tag-hansken: #245ad6;
-        --tag-case: #059669;
-        --tag-dfaas: #7c3aed;
-        --tag-solveit: #d97706;
-    }
-
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.4; color: var(--text); background: #f1f5f9; margin: 0; padding: 10px; overflow-x: hidden; }
-    .cv-container { max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; display: flex; flex-wrap: wrap; }
-    
-    /* Sidebar (Left Column) */
-    .sidebar { flex: 1; background: var(--primary); color: white; padding: 30px 20px; }
-    .sidebar h1 { font-size: 1.8rem; margin: 0; line-height: 1.2; }
-    .sidebar h2 { font-size: 0.9rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
-    .contact-info { margin-top: 20px; font-size: 0.85rem; }
-    .contact-item { color: #cbd5e1; margin-bottom: 8px; display: flex; align-items: center; }
-    .contact-item a { color: #cbd5e1; text-decoration: none; word-break: break-all; }
-    
-    /* Main Content (Right Column) */
-    .main-content { flex: 2; padding: 30px; background: white; }
-    
-    /* Section Styling */
-    .section-header { 
-        display: flex; justify-content: space-between; align-items: center;
-        border-bottom: 2px solid var(--primary); margin: 20px 0 10px 0; padding-bottom: 5px; cursor: pointer;
-    }
-    .section-header h3 { margin: 0; text-transform: uppercase; font-size: 1rem; color: var(--primary); }
-    .collapse-icon { font-weight: bold; font-size: 1.2rem; }
-    .collapsible-content { max-height: 5000px; overflow: hidden; transition: max-height 0.3s ease-in-out; }
-    .collapsed { max-height: 0; }
-
-    /* Item Styling */
-    .entry { margin-bottom: 15px; position: relative; }
-    .entry-date { font-weight: bold; color: var(--accent); font-size: 0.8rem; }
-    .entry-title { font-weight: 700; display: block; margin: 2px 0; }
-    .entry-desc { font-size: 0.9rem; color: #4b5563; }
-    
-    .tag { font-size: 0.65rem; padding: 1px 6px; border-radius: 10px; font-weight: 700; color: white; margin-left: 3px; font-variant: small-caps; cursor: pointer; }
-    .grayed { opacity: 0.5; }
-    .hidden { display: none; }
-    .tag-hansken { background: var(--tag-hansken); }
-    .tag-case { background: var(--tag-case); }
-    .tag-dfaas { background: var(--tag-dfaas); }
-    .tag-solveit { background: var(--tag-solveit); }
-    
-    .link-btn { 
-        display: inline-block; margin-top: 0px; padding: 0px 2px; font-size: 0.75rem; font-weight: normal;
-        border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; text-decoration: none; transition: 0.2s;
-    }
-    .link-btn:hover { background: var(--accent); color: white; }
-
-    .dutch-flag {
-        display: inline-block;
-        width: 18px;
-        height: 12px;
-        background-color: white;
-        border-top: 4px solid #AE1C28;
-        border-bottom: 4px solid #21468B;
-        margin: 0px;
-    }
-
-    /* Dark Mode */
-    body.dark-mode {
-        --primary: #2d5a7f;
-        --accent: #5dade2;
-        --text: #e2e8f0;
-        --light-bg: #2c3e50;
-        --border: #34495e;
-        background: #1a1a1a;
-    }
-    body.dark-mode .cv-container { background: #2c3e50; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-    body.dark-mode .main-content { background: #2c3e50; }
-    body.dark-mode .sidebar { background: #1a3a5f; }
-    body.dark-mode .contact-item a { color: #a0aec0; }
-    body.dark-mode .entry-desc { color: #cbd5e1; }
-    body.dark-mode .section-header h3 { color: var(--text); }
-    body.dark-mode .tag { color: #e2e8f0; }
-
-    @media (max-width: 900px) { 
-        .cv-container { flex-direction: column; } 
-        .sidebar, .main-content { width: 100%; min-width: unset; }
-        body { padding: 5px; }
-        .sidebar { padding: 20px 15px; }
-        .main-content { padding: 20px 15px; }
-    }
-    @media print { 
-        .collapse-icon { display: none; } 
-        .collapsed { max-height: none; } 
-        .sidebar { background: #eee !important; color: black !important; } 
-    }
-</style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -118,6 +20,8 @@
             <div class="contact-item"><strong>ORCID:</strong>&nbsp; <a href="https://orcid.org/0000-0002-6128-5201" target="_blank">0000-0002-6128-5201</a></div>
             <div class="contact-item"><strong>Scopus:</strong>&nbsp; <a href="https://www.scopus.com/authid/detail.uri?authorId=22434224000" target="_blank">22434224000</a></div>
 			<div class="contact-item"><strong>Google Scholar:</strong>&nbsp; <a href="https://scholar.google.nl/citations?user=ganb1G4AAAAJ" target="_blank">ganb1G4AAAAJ</a></div>
+            <div class="contact-item"><strong>DBLP:</strong>&nbsp; <a href="https://dblp.org/pid/81/3292.html" target="_blank">81/3292.html</a></div>
+            
             <div class="contact-item"><strong>Email:</strong>&nbsp; ping (at) harm.fyi</div>
         </div>
 
@@ -883,6 +787,22 @@
                 <span class="entry-date">1995 - 2000</span>
                 <span class="entry-title">MSc (Computer Science, with honors)</span>
                 <span class="entry-desc">Eindhoven University of Technology. Faculty of Mathematics & Computer Science</span>
+            </div>
+        </div>
+        <div class="section-header" onclick="toggleSection('misc')">
+            <h3>Misc</h3>
+            <span class="collapse-icon" id="emp-icon">+</span>
+        </div>
+        <div id="misc" class="collapsible-content collapsed">
+            <div class="entry">
+                <span class="entry-date">Mathematics Genealogy Project</span><br/>
+
+                <span class="entry-desc">I spent some time finding out my academic ancestry via the <a href="https://www.mathgenealogy.org/" target="_blank" rel="noopener noreferrer">Mathematics Genealogy Project</a>. 
+                    I am very surprised to have so many great scientists as academic ancestors. 
+                    Not only Church, Lagrange, Laplace, Euler, Bernoulli and Leibniz, 
+                    but even Christiaan Huygens, Desiderius Erasmus and Galileo Galilei! 🤯<br/>
+                    <a href="tree.html" target="_blank" rel="noopener noreferrer">My academic ancestry can be found here</a>.
+                </span>
             </div>
         </div>
     </main>
