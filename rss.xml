@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Harm van Beek - Digital Forensics</title>
+    <link>https://harm.fyi</link>
+    <description>Podcast on digital forensics by prof. Harm van Beek, Endowed Full Professor of Digital Forensics at Open Universiteit</description>
+    <language>nl-nl</language>
+    <lastBuildDate>Fri, 02 May 2026 00:00:00 +0000</lastBuildDate>
+    <itunes:author>Harm van Beek</itunes:author>
+    <itunes:owner>
+      <itunes:name>Harm van Beek</itunes:name>
+      <itunes:email>ping@harm.fyi</itunes:email>
+    </itunes:owner>
+    <itunes:category text="Technology" />
+    <itunes:explicit>no</itunes:explicit>
+    <image>
+      <url>https://harm.fyi/favicon.ico</url>
+      <title>Harm van Beek</title>
+      <link>https://harm.fyi</link>
+    </image>
+
+    <item>
+      <title>Digitale sporen: Duidelijk onduidelijk</title>
+      <description>Oratie door prof. Harm van Beek bij aanvaarding van het ambt aan de Open Universiteit.</description>
+      <link>https://harm.fyi/oratie.html</link>
+      <guid>https://harm.fyi/oratie.html</guid>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
+      <itunes:author>Harm van Beek</itunes:author>
+      <itunes:duration>00:45:00</itunes:duration>
+      <itunes:summary>Oratie - Open Universiteit</itunes:summary>
+      <content:encoded><![CDATA[
+        <p>Oratie prof. Harm van Beek, Open Universiteit, Heerlen</p>
+        <p>Onderwerp: Digitale sporen: Duidelijk onduidelijk</p>
+        <p>Meer informatie: <a href="https://ou.nl/vanbeek">ou.nl/vanbeek</a></p>
+      ]]></content:encoded>
+      <enclosure url="https://harm.fyi/Oratie_Harm-van-Beek.mp3" length="0" type="audio/mpeg" />
+    </item>
+
+  </channel>
+</rss>

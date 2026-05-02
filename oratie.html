@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Podcast - Harm van Beek</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .podcast-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .podcast-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .podcast-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    .episode-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .episode-num {
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+    }
+
+    .episode-date {
+      font-weight: 500;
+      color: #4b5563;
+      font-size: 0.8rem;
+    }
+
+    .episode-title {
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      line-height: 1.15;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+
+    .episode-subtitle {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .main-content .tags .tag {
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .description {
+      color: #4b5563;
+      margin-bottom: 1.8rem;
+      line-height: 1.75;
+    }
+    .description a { color: #1a3a5f; text-decoration: underline; word-break: break-all; }
+    body.dark-mode .description a { color: #cbd5e1; text-decoration: underline; word-break: break-all; }
+
+    .player {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .player-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .play-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .play-btn:hover { transform: scale(1.05); }
+    .play-btn svg { width: 22px; height: 22px; fill: white; }
+
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .track-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .time-display {
+      color: #6b7280;
+      font-size: 0.85rem;
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .time-current { color: var(--accent); }
+
+    .seek-row {
+      margin-bottom: 1.25rem;
+    }
+
+    .seek-bar {
+      height: 6px;
+      background: #d9dfe6;
+      border-radius: 999px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .seek-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.1s linear;
+    }
+
+    .waveform {
+      display: flex;
+      gap: 2px;
+      align-items: flex-end;
+      height: 54px;
+      margin-bottom: 1.3rem;
+    }
+
+    .bar {
+      flex: 1;
+      background: #cbd5e1;
+      border-radius: 999px;
+      min-height: 12px;
+      animation: pulse var(--d, 1s) ease-in-out infinite alternate;
+      animation-play-state: paused;
+    }
+
+    .waveform.playing .bar { animation-play-state: running; }
+
+    @keyframes pulse {
+      from { transform: scaleY(0.35); }
+      to   { transform: scaleY(1); }
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .ctrl-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-btn,
+    .speed-btn {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      color: #374151;
+      padding: 0.65rem 0.9rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ctrl-btn:hover,
+    .speed-btn:hover { background: #eef2f7; }
+
+    .volume-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #6b7280;
+    }
+
+    .volume-row svg { width: 18px; height: 18px; }
+
+    input[type="range"] {
+      width: 90px;
+      height: 4px;
+      background: #d9dfe6;
+      border-radius: 999px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb,
+    input[type="range"]::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .sub-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .rss-btn {
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    body.dark-mode .podcast-card {
+      background: #1f2937;
+      border-color: #374151;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    }
+
+    body.dark-mode .podcast-card::before {
+      background: #60a5fa;
+    }
+
+    body.dark-mode .episode-meta,
+    body.dark-mode .episode-title,
+    body.dark-mode .episode-subtitle,
+    body.dark-mode .description,
+    body.dark-mode .time-display,
+    body.dark-mode .volume-row {
+      color: #d1d5db;
+    }
+
+    body.dark-mode .episode-date {
+      color: #9ca3af;
+    }
+
+    body.dark-mode .player {
+      background: #111827;
+      border-color: #374151;
+    }
+
+    body.dark-mode .play-btn {
+      background: #60a5fa;
+    }
+
+    body.dark-mode .track-name {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .seek-bar {
+      background: #374151;
+    }
+
+    body.dark-mode .seek-fill {
+      background: #60a5fa;
+    }
+
+    body.dark-mode .bar {
+      background: #4b5563;
+    }
+
+    body.dark-mode .ctrl-btn,
+    body.dark-mode .speed-btn {
+      background: #1f2937;
+      border-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    body.dark-mode .ctrl-btn:hover,
+    body.dark-mode .speed-btn:hover {
+      background: #111827;
+    }
+
+    body.dark-mode .sub-link {
+      color: #60a5fa;
+    }
+
+    body.dark-mode .rss-btn {
+      background: #60a5fa;
+      color: #111827;
+    }
+
+    #theme-toggle {
+      color: var(--accent);
+    }
+
+    body.dark-mode #theme-toggle {
+      color: #60a5fa;
+    }
+
+    @media (max-width: 780px) {
+      .podcast-card { padding: 1.5rem; }
+      .player-top { flex-direction: column; align-items: stretch; }
+      .episode-meta { flex-direction: column; align-items: flex-start; }
+      .footer { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-container" style="flex-direction: column;">
+    <main class="main-content">
+    <p class="podcast-label">Now Broadcasting</p>
+
+  <div class="podcast-card">
+    <div class="episode-meta">
+      <span class="episode-num">Inaugural Lecture</span>
+      <span class="episode-date">September 2025</span>
+    </div>
+
+    <h1 class="episode-title">Digitale sporen: Duidelijk onduidelijk <div class="dutch-flag"></div></h1>
+    <p class="episode-subtitle">Inaugural lecture by prof. Harm van Beek at Open Universiteit</p>
+
+    <div class="tags">
+      <span class="tag">Inaugural Lecture</span>
+      <span class="tag">Digital Forensics</span>
+      <span class="tag">Open Universiteit</span>
+    </div>
+
+    <p class="description">
+      Inaugural lecture delivered in Dutch by prof. Harm van Beek on the theme of digital traces in forensic science. 
+      This lecture explores the nature of digital evidence and the challenges in interpreting digital traces in criminal investigations. 
+      For more information, visit <a href="https://ou.nl/vanbeek" target="_blank" rel="noopener noreferrer">ou.nl/vanbeek</a>.
+    </p>
+
+    <!-- ── Player ── -->
+    <div class="player">
+
+      <!-- Waveform -->
+      <div class="waveform" id="waveform"></div>
+
+      <!-- Top row: play + info + time -->
+      <div class="player-top">
+        <button class="play-btn" id="playBtn" aria-label="Play / Pause">
+          <!-- Play icon -->
+          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <!-- Pause icon (hidden) -->
+          <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <div class="player-info">
+          <div class="now-playing">Now Playing</div>
+          <div class="track-name" id="trackName">Oratie Harm van Beek</div>
+        </div>
+
+        <div class="time-display">
+          <span class="time-current" id="timeCurrent">0:00</span>
+          <span>/</span>
+          <span id="timeDuration">--:--</span>
+        </div>
+      </div>
+
+      <!-- Seek bar -->
+      <div class="seek-row">
+        <div class="seek-bar" id="seekBar">
+          <div class="seek-fill" id="seekFill"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="ctrl-group">
+          <!-- Rewind 15s -->
+          <button class="ctrl-btn" id="rewBtn" title="−15s">
+            <svg viewBox="0 0 24 24"><path d="M12 5V2L7 7l5 5V9c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="8" y="16" font-size="6" fill="currentColor" font-family="monospace">15</text></svg>
+            −15s
+          </button>
+          <!-- Forward 30s -->
+          <button class="ctrl-btn" id="fwdBtn" title="+30s">
+            <svg viewBox="0 0 24 24"><path d="M12 5V2l5 5-5 5V9c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="8" y="16" font-size="6" fill="currentColor" font-family="monospace">30</text></svg>
+            +30s
+          </button>
+        </div>
+
+        <div class="ctrl-group">
+          <button class="speed-btn" id="speedBtn">1×</button>
+        </div>
+
+        <div class="volume-row">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="rss.xml" class="rss-btn">RSS Feed</a>
+  </div>
+</div>
+
+<div id="theme-toggle" style="margin-top: 20px; cursor: pointer; font-size: 0.8rem; color: var(--accent); text-align: center; padding: 1rem;">🌙 Dark Mode</div>
+
+    </main>
+</div>
+
+<!-- Hidden audio element — point src at your MP3 -->
+<audio id="audio" preload="metadata">
+  <source src="Oratie_Harm-van-Beek.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+    // Theme toggle
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        this.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-toggle').textContent = '☀️ Light Mode';
+    } else {
+        document.getElementById('theme-toggle').textContent = '🌙 Dark Mode';
+    }
+  /* ── Waveform bars ── */
+  const waveform = document.getElementById('waveform');
+  const BAR_COUNT = 60;
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    const h = 20 + Math.random() * 80;
+    bar.style.height = h + '%';
+    bar.style.setProperty('--d', (0.6 + Math.random() * 0.8) + 's');
+    bar.style.animationDelay = (Math.random() * 0.5) + 's';
+    waveform.appendChild(bar);
+  }
+
+  /* ── Player logic ── */
+  const audio       = document.getElementById('audio');
+  const playBtn     = document.getElementById('playBtn');
+  const iconPlay    = document.getElementById('iconPlay');
+  const iconPause   = document.getElementById('iconPause');
+  const seekFill    = document.getElementById('seekFill');
+  const seekBar     = document.getElementById('seekBar');
+  const timeCurrent = document.getElementById('timeCurrent');
+  const timeDuration= document.getElementById('timeDuration');
+  const speedBtn    = document.getElementById('speedBtn');
+  const rewBtn      = document.getElementById('rewBtn');
+  const fwdBtn      = document.getElementById('fwdBtn');
+  const volumeSlider= document.getElementById('volumeSlider');
+  const trackName   = document.getElementById('trackName');
+
+  /* Derive a nice track name from the src */
+  function refreshTrackName() {
+    const src = audio.currentSrc || audio.src || '';
+    const file = src.split('/').pop().split('?')[0] || 'your-episode.mp3';
+    trackName.textContent = decodeURIComponent(file);
+  }
+
+  const fmt = s => {
+    if (!isFinite(s)) return '--:--';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return m + ':' + sec;
+  };
+
+  audio.addEventListener('loadedmetadata', () => {
+    timeDuration.textContent = fmt(audio.duration);
+    refreshTrackName();
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    seekFill.style.width = pct + '%';
+    timeCurrent.textContent = fmt(audio.currentTime);
+  });
+
+  audio.addEventListener('ended', () => {
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+    waveform.classList.remove('playing');
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      iconPlay.style.display = 'none';
+      iconPause.style.display = '';
+      waveform.classList.add('playing');
+    } else {
+      audio.pause();
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+      waveform.classList.remove('playing');
+    }
+  });
+
+  seekBar.addEventListener('click', e => {
+    const rect = seekBar.getBoundingClientRect();
+    const pct  = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+
+  rewBtn.addEventListener('click', () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+  fwdBtn.addEventListener('click', () => { audio.currentTime = Math.min(audio.duration, audio.currentTime + 30); });
+
+  const speeds = [1, 1.25, 1.5, 1.75, 2];
+  let speedIdx = 0;
+  speedBtn.addEventListener('click', () => {
+    speedIdx = (speedIdx + 1) % speeds.length;
+    audio.playbackRate = speeds[speedIdx];
+    speedBtn.textContent = speeds[speedIdx] + '×';
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+  });
+
+  refreshTrackName();
+</script>
+</body>
+</html>
