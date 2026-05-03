@@ -9,16 +9,11 @@
     <itunes:author>Harm van Beek</itunes:author>
     <itunes:owner>
       <itunes:name>Harm van Beek</itunes:name>
-      <itunes:email>ping@harm.fyi</itunes:email>
+      <itunes:email>podcast@harm.fyi</itunes:email>
     </itunes:owner>
     <itunes:category text="Technology" />
     <itunes:explicit>no</itunes:explicit>
-    <image>
-      <url>https://harm.fyi/prof-harm.jpg</url>
-      <title>Harm van Beek</title>
-      <link>https://harm.fyi</link>
-    </image>
-
+    <itunes:image>https://harm.fyi/prof-harm.jpg</itunes:image>
     <item>
       <title>Digitale sporen: Duidelijk onduidelijk</title>
       <description>Oratie door prof. Harm van Beek bij aanvaarding van het ambt aan de Open Universiteit.</description>
