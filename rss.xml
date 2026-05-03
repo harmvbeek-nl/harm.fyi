@@ -13,7 +13,7 @@
     </itunes:owner>
     <itunes:category text="Technology" />
     <itunes:explicit>no</itunes:explicit>
-    <itunes:image>https://harm.fyi/prof-harm.jpg</itunes:image>
+    <itunes:image href="https://harm.fyi/prof-harm.jpg" />
     <item>
       <title>Digitale sporen: Duidelijk onduidelijk</title>
       <description>Oratie door prof. Harm van Beek bij aanvaarding van het ambt aan de Open Universiteit.</description>
