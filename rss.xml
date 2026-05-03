@@ -4,9 +4,9 @@
     <atom:link href="https://harm.fyi/rss.xml" rel="self" type="application/rss+xml" />
     <title>Harm van Beek - Digital Forensics</title>
     <link>https://harm.fyi</link>
-    <description>Podcast on digital forensics by prof. Harm van Beek, Endowed Full Professor of Digital Forensics at Open Universiteit</description>
+    <description>Podcast on digital forensics by prof. Harm van Beek, endowed full professor of Digital Forensics at Open Universiteit</description>
     <language>nl-nl</language>
-    <lastBuildDate>Sun, 03 May 2026 10:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2026 13:00:00 +0200</lastBuildDate>
     <itunes:author>Harm van Beek</itunes:author>
     <itunes:owner>
       <itunes:name>Harm van Beek</itunes:name>
@@ -14,12 +14,12 @@
     </itunes:owner>
     <itunes:category text="Digital Forensics" />
     <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://harm.fyi/prof-harm.jpg" />
+    <itunes:image href="https://harm.fyi/prof-harm.png" />
     <item>
       <title>Digitale sporen: Duidelijk onduidelijk</title>
       <description>Oratie prof. Harm van Beek</description>
       <link>https://harm.fyi/podcast.html</link>
-      <guid>https://harm.fyi/podcast.html</guid>
+      <guid>f65bfb66-175a-4da8-8a82-635729a89328</guid>
       <pubDate>Fri, 19 Sep 2025 16:00:00 +0100</pubDate>
       <itunes:author>Harm van Beek</itunes:author>
       <itunes:duration>00:41:03</itunes:duration>
