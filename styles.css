@@ -10,6 +10,7 @@
     --tag-case: #059669;
     --tag-dfaas: #7c3aed;
     --tag-solveit: #d97706;
+    --tag-dfnl: #dc2626;
 }
 
 body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.4; color: var(--text); background: #f1f5f9; margin: 0; padding: 10px; overflow-x: hidden; }
@@ -50,6 +51,7 @@ body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 
 .tag-case { background: var(--tag-case); }
 .tag-dfaas { background: var(--tag-dfaas); }
 .tag-solveit { background: var(--tag-solveit); }
+.tag-dfnl { background: var(--tag-dfnl); }
 
 .link-btn { 
     display: inline-block; margin-top: 0px; padding: 0px 2px; font-size: 0.75rem; font-weight: normal;
